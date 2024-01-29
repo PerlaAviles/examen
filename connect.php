@@ -42,7 +42,7 @@ if(!$connection)
         $resultado = mysqli_query($connection,$instruccion_SQL);
 
         //$consulta = "SELECT * FROM tabla where id ='2'"; si queremos que nos muestre solo un registro en especifivo de ID
-        $consulta = "SELECT * FROM tabla_form";
+        $consulta = "SELECT * FROM Producto";
         
 $result = mysqli_query($connection,$consulta);
 if(!$result) 
