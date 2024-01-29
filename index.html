@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Información de la IP del Cliente</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e83e8c; /* Rosa pastel */
+            color: #000; /* Letras negras */
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff; /* Blanco */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #e9ecef; /* Gris claro */
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 50px;
+            color: #e83e8c; /* Color rosa pastel para el título */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">Información de la IP del Cliente</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>País</th>
+                <th>Continente</th>
+                <th>Zona Horaria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí puedes agregar filas con datos -->
+            <tr>
+                <td id="ip">-</td>
+                <td id="pais">-</td>
+                <td id="continente">-</td>
+                <td id="zona_horaria">-</td>
+            </tr>
+            <!-- Puedes agregar más filas según sea necesario -->
+        </tbody>
+    </table>
+</div>
+
+
+    <form id="productForm">
+        <div class="form-group">
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" class="form-control" id="productName" placeholder="Ingrese el nombre del producto" required>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Precio:</label>
+            <input type="number" class="form-control" id="productPrice" placeholder="Ingrese el precio" required>
+        </div>
+        <div class="form-group">
+            <label for="productStock">Stock:</label>
+            <input type="number" class="form-control" id="productStock" placeholder="Ingrese el stock" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+
+    <div id="productTable" style="display: none;">
+        <h2 class="title">Registros de Productos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                <!-- Aquí se agregarán las filas de productos -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    // Función para manejar el envío del formulario
+    document.getElementById('productForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe por defecto
+
+        // Obtener los valores del formulario
+        var productName = document.getElementById('productName').value;
+        var productPrice = document.getElementById('productPrice').value;
+        var productStock = document.getElementById('productStock').value;
+
+        // Agregar la fila a la tabla de productos
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${productName}</td>
+            <td>${productPrice}</td>
+            <td>${productStock}</td>
+        `;
+        document.getElementById('productTableBody').appendChild(newRow);
+
+        // Mostrar la tabla de productos
+        document.getElementById('productTable').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
