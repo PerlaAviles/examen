@@ -115,29 +115,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script>
-    // Función para manejar el envío del formulario
-    document.getElementById('productForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar que el formulario se envíe por defecto
-
-        // Obtener los valores del formulario
-        var productName = document.getElementById('productName').value;
-        var productPrice = document.getElementById('productPrice').value;
-        var productStock = document.getElementById('productStock').value;
-
-        // Agregar la fila a la tabla de productos
-        var newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td>${productName}</td>
-            <td>${productPrice}</td>
-            <td>${productStock}</td>
-        `;
-        document.getElementById('productTableBody').appendChild(newRow);
-
-        // Mostrar la tabla de productos
-        document.getElementById('productTable').style.display = 'block';
-    });
-</script>
 
 </body>
 </html>
