@@ -1,75 +1,53 @@
-// Variables para los elementos del DOM
+// alert("Hola mundo");
+//se manda un mensaje al usuario que esta trabajando 
 let ip = document.getElementById("ip");
 let pais = document.getElementById("pais");
 let continente = document.getElementById("continente");
 let zona_horaria = document.getElementById("zona_horaria");
-let tablaDatos = document.getElementById("tablaDatos");
+const solicitudAPI = () => {
 
-// Función para enviar el formulario con Axios y agregar a la tabla
-function enviarFormulario() {
-  var nombreProducto = document.getElementById('productName').value;
-  var precioProducto = document.getElementById('productPrice').value;
-  var stockProducto = document.getElementById('productStock').value;
+    // Hacer una petición para un usuario con ID especifico
+    axios.get("https://itp-bdd-ptag.000webhostapp.com/php-geoip-api/index.php")
+        .then(function (response) { // se crea una funcion en el cual recibo como parametro la funcion respuesta
+            // manejar respuesta exitosa
+            console.log(response.data.pais);
+            ip.innerHTML = response.data.ip;
+            pais.innerHTML = response.data.pais;
+            continente.innerHTML = response.data.continente;
+            zona_horaria.innerHTML = response.data.zona_horaria;
 
-  var datos = {
-    formulario: {
-      nombre: nombreProducto,
-      precio: precioProducto,
-      stock: stockProducto
-    },
-    api: {
-      ip: ip.innerHTML,
-      pais: pais.innerHTML,
-      continente: continente.innerHTML,
-      zona_horaria: zona_horaria.innerHTML
-    }
-  };
-
-  // Agregar a la tabla
-  var fila = `<tr><td>${nombreProducto}</td><td>${precioProducto}</td><td>${stockProducto}</td></tr>`;
-  tablaDatos.innerHTML += fila;
-
-  // Imprimir datos en la consola
-  console.log('Datos a enviar:', JSON.stringify(datos));
-
-  // Enviar al servidor centralizado
-  axios.post("https://itp-bdd.000webhostapp.com/Central.php", datos, {
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
-    .then(function (response) {
-      console.log(response.data);
-      // Puedes realizar acciones adicionales después de enviar el formulario al servidor centralizado
-    })
-    .catch(function (error) {
-      console.error(error);
-      // Manejar errores en caso necesario
-    });
-}
-
-// Función para hacer la solicitud a la API
-const SolicitudAPI = () => {
-  axios.get("https://itp-bdd.000webhostapp.com/php-geoip-api/index.php")
-    .then(function (response) {
-      console.log(response.data);
-      ip.innerHTML = response.data.ip;
-      pais.innerHTML = response.data.pais;
-      continente.innerHTML = response.data.continente;
-      zona_horaria.innerHTML = response.data.zona_horaria;
-      // No necesitas asignar valores a nombre y comida aquí, ya que estos se obtienen del formulario
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .finally(function () {
-      // siempre será ejecutado
-    });
+        })
+        .catch(function (error) {
+            // manejar error
+            console.log(error);
+        })
+        .finally(function () {
+            // siempre sera executado
+        });
 };
 
-// Llama al evento LOAD cada vez que se refresca o se actualiza la página
-// Y llama a la función SolicitudAPI que tiene la rutina de llamada a la API desde Axios
-window.addEventListener('load', function () {
-  SolicitudAPI();
-  // Puedes agregar más acciones después de cargar la página si es necesario
+// Función para manejar el envío del formulario de registro de productos
+document.getElementById('productForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evitar que el formulario se envíe por defecto
+
+    // Obtener los valores del formulario
+    var productName = document.getElementById('productName').value;
+    var productPrice = document.getElementById('productPrice').value;
+    var productStock = document.getElementById('productStock').value;
+
+    // Agregar la fila a la tabla de productos
+    var newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${productName}</td>
+        <td>${productPrice}</td>
+        <td>${productStock}</td>
+    `;
+    document.getElementById('productTableBody').appendChild(newRow);
+
+    // Mostrar la tabla de productos
+    document.getElementById('productTable').style.display = 'block';
 });
+
+// Llama al evento LOAD CADA VEZ QUE SE REFRESCA O ACTUALIZA LA PÁGINA 
+// Y llama a la funcion solicitudAPI que tiene la rutina de llamar a la API desde axios
+window.addEventListener('load', solicitudAPI);
