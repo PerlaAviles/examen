@@ -51,98 +51,68 @@
 
 <div class="container">
     <h1 class="title">Información de la IP del Cliente</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>IP</th>
-                <th>País</th>
-                <th>Continente</th>
-                <th>Zona Horaria</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí puedes agregar filas con datos -->
-            <tr>
-                <td id="ip">-</td>
-                <td id="pais">-</td>
-                <td id="continente">-</td>
-                <td id="zona_horaria">-</td>
-            </tr>
-            <!-- Puedes agregar más filas según sea necesario -->
-        </tbody>
-    </table>
+
+    <form id="productForm">
+        <div class="form-group">
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" class="form-control" id="productName" placeholder="Ingrese el nombre del producto" required>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Precio:</label>
+            <input type="number" class="form-control" id="productPrice" placeholder="Ingrese el precio" required>
+        </div>
+        <div class="form-group">
+            <label for="productStock">Stock:</label>
+            <input type="number" class="form-control" id="productStock" placeholder="Ingrese el stock" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+
+    <div id="productTable" style="display: none;">
+        <h2 class="title">Registros de Productos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                <!-- Aquí se agregarán las filas de productos -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
-    <h1>Formulario de registro</h1>
-    <form action="connect.php" name="" method="POST">
-     
-        <tr>
-          <td>
-            Producto:
-          </td>
-          <td>
-            <label for="Producto"></label>
-            <input type="text" name="Producto" id="Producto" required  />
-          </td>
-        </tr>
-        <tr>
-          <td>
-           Precio:
-          </td>
-          <td>
-            <label for="Precio"></label>
-            <input type="text" name="Precio" id="Precio" required  />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Stock:
-          </td>
-          <td>
-            <label for="Stock"></label>
-            <input type="text" name="Stock" id="Stock"  required />
-          </td>
-        </tr>
-        <!--<tr>
-          <td>
-            Repetir contraseña:
-          </td>
-          <td>
-            <label for="rep_pasword"></label>
-            <input type="pasword" name="rep_contraseña" id="rep_pasword"  required />
-          </td>
-        </tr>-->
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-        
-            <input
-              type="submit"
-              name="enviar"
-              id="enviar"
-              value="Registrarse"
-            />
-          </td>
-      
-            <input type="reset" name="borrar" id="borrar" value="Restablecer" />
-          </td>
-        </tr>
-      </table>
-    </form>
-  </body>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/main.js"></script>
-</body>
 
-</html>
+<script>
+    // Función para manejar el envío del formulario
+    document.getElementById('productForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe por defecto
+
+        // Obtener los valores del formulario
+        var productName = document.getElementById('productName').value;
+        var productPrice = document.getElementById('productPrice').value;
+        var productStock = document.getElementById('productStock').value;
+
+        // Agregar la fila a la tabla de productos
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${productName}</td>
+            <td>${productPrice}</td>
+            <td>${productStock}</td>
+        `;
+        document.getElementById('productTableBody').appendChild(newRow);
+
+        // Mostrar la tabla de productos
+        document.getElementById('productTable').style.display = 'block';
+    });
+</script>
+
 </body>
 </html>
