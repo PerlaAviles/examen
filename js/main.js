@@ -6,7 +6,7 @@ let continente=document.getElementById("continente");
 let zona_horaria=document.getElementById("zona_horaria");
 
 const solicitudAPI = () => {
-    axios.get("https://itp-bdd-fse-01.000webhostapp.com/php-geoip-api/index.php")
+    axios.get("https://itp-bdd-ptag.000webhostapp.com/php-geoip-api/index.php")
     .then(function (response) {
       // handle success
       console.log(response.data.ip);
