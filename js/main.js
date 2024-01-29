@@ -30,9 +30,9 @@ document.getElementById('productForm').addEventListener('submit', function (even
     event.preventDefault(); // Evitar que el formulario se envíe por defecto
 
     // Obtener los valores del formulario
-    var productName = document.getElementById('productName').value;
-    var productPrice = document.getElementById('productPrice').value;
-    var productStock = document.getElementById('productStock').value;
+    var Producto = document.getElementById('Producto').value;
+    var Precio= document.getElementById('Precio').value;
+    var Stock = document.getElementById('Stock').value;
 
     // Mostrar mensaje de éxito
     var successMessage = document.createElement('p');

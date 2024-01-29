@@ -5,7 +5,7 @@ $password = "BadRomance06.";
 $dbname = "id20657631_productos";
 
 
-$connection = mysqli_connect($host, $user, $pass);
+$connection = mysqli_connect($servername, $username, $password, $dbname);
 
 //hacemos llamado al imput de formuario
 $Producto = $_POST["Producto"] ;
@@ -22,11 +22,11 @@ if(!$connection)
             echo "<b><h3>Hemos conectado al servidor</h3></b>" ;
         }
         //indicamos el nombre de la base datos
-        $datab = "dbformulario";
+        $dbname = "id20657631_productos";
         //indicamos selecionar ala base datos
-        $db = mysqli_select_db($connection,$datab);
+        $dbname = mysqli_select_db($Producto,$datab);
 
-        if (!$db)
+        if (!$dbname)
         {
         echo "No se ha podido encontrar la Tabla";
         }
@@ -35,7 +35,7 @@ if(!$connection)
         echo "<h3>Tabla seleccionada:</h3>" ;
         }
         //insertamos datos de registro al mysql xamp, indicando nombre de la tabla y sus atributos
-        $instruccion_SQL = "INSERT INTO tabla_form (nombre, usuario, contraseña)
+        $instruccion_SQL = "INSERT INTO tabla_form (Producto, Precio, Stock)
                              VALUES ('$Producto','$Precio','$Stock')";
                            
                             
