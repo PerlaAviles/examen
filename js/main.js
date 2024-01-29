@@ -26,16 +26,3 @@ const solicitudAPI = () => {
         });
 };
 
-document.getElementById('productForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evitar que el formulario se envíe por defecto
-
-    // Obtener los valores del formulario
-    var Producto = document.getElementById('Producto').value;
-    var Precio= document.getElementById('Precio').value;
-    var Stock = document.getElementById('Stock').value;
-
-    // Mostrar mensaje de éxito
-    var successMessage = document.createElement('p');
-    successMessage.innerHTML = 'Producto agregado correctamente';
-    document.body.appendChild(successMessage);
-});
