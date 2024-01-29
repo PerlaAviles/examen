@@ -8,9 +8,9 @@ $dbname = "id20657631_productos";
 $connection = mysqli_connect($host, $user, $pass);
 
 //hacemos llamado al imput de formuario
-$nombre = $_POST["nombre"] ;
-$usuario = $_POST["usuario"] ;
-$contraseña = $_POST["contraseña"] ;
+$Producto = $_POST["Producto"] ;
+$Precio = $_POST["Precio"] ;
+$Stock = $_POST["Stock"] ;
 
 //verificamos la conexion a base datos
 if(!$connection) 
@@ -36,7 +36,7 @@ if(!$connection)
         }
         //insertamos datos de registro al mysql xamp, indicando nombre de la tabla y sus atributos
         $instruccion_SQL = "INSERT INTO tabla_form (nombre, usuario, contraseña)
-                             VALUES ('$nombre','$usuario','$contraseña')";
+                             VALUES ('$Producto','$Precio','$Stock')";
                            
                             
         $resultado = mysqli_query($connection,$instruccion_SQL);
@@ -52,18 +52,18 @@ if(!$result)
 echo "<table>";
 echo "<tr>";
 echo "<th><h1>id</th></h1>";
-echo "<th><h1>Nombre</th></h1>";
-echo "<th><h1>Usuario</th></h1>";
-echo "<th><h1>Contraseña</th></h1>";
+echo "<th><h1>Producto</th></h1>";
+echo "<th><h1>Precio</th></h1>";
+echo "<th><h1>Stock</th></h1>";
 echo "</tr>";
 
 while ($colum = mysqli_fetch_array($result))
  {
     echo "<tr>";
     echo "<td><h2>" . $colum['id']. "</td></h2>";
-    echo "<td><h2>" . $colum['nombre']. "</td></h2>";
-    echo "<td><h2>" . $colum['usuario'] . "</td></h2>";
-    echo "<td><h2>" . $colum['contraseña'] . "</td></h2>";
+    echo "<td><h2>" . $colum['Producto']. "</td></h2>";
+    echo "<td><h2>" . $colum['Precio'] . "</td></h2>";
+    echo "<td><h2>" . $colum['Stock'] . "</td></h2>";
     echo "</tr>";
 }
 echo "</table>";
