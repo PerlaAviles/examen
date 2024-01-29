@@ -48,6 +48,81 @@
     </style>
 </head>
 <body>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Información de la IP del Cliente</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e83e8c; /* Rosa pastel */
+            color: #000; /* Letras negras */
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff; /* Blanco */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #e9ecef; /* Gris claro */
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 50px;
+            color: #e83e8c; /* Color rosa pastel para el título */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">Información de la IP del Cliente</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>País</th>
+                <th>Continente</th>
+                <th>Zona Horaria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí puedes agregar filas con datos -->
+            <tr>
+                <td id="ip">-</td>
+                <td id="pais">-</td>
+                <td id="continente">-</td>
+                <td id="zona_horaria">-</td>
+            </tr>
+            <!-- Puedes agregar más filas según sea necesario -->
+        </tbody>
+    </table>
+</div>
 
 <div class="container">
     <h1 class="title">Información de la IP del Cliente</h1>
