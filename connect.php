@@ -21,10 +21,9 @@ if(!$connection)
         {
             echo "<b><h3>Hemos conectado al servidor</h3></b>" ;
         }
-        //indicamos el nombre de la base datos
-        $dbname = "id20657631_productos";
+        $datab = "id20657631_productos";
         //indicamos selecionar ala base datos
-        $dbname = mysqli_select_db($Producto,$datab);
+        $db = mysqli_select_db($connection,$datab);
 
         if (!$dbname)
         {
@@ -35,7 +34,7 @@ if(!$connection)
         echo "<h3>Tabla seleccionada:</h3>" ;
         }
         //insertamos datos de registro al mysql xamp, indicando nombre de la tabla y sus atributos
-        $instruccion_SQL = "INSERT INTO tabla_form (Producto, Precio, Stock)
+        $instruccion_SQL = "INSERT INTO Producto_form (Producto, Precio, Stock)
                              VALUES ('$Producto','$Precio','$Stock')";
                            
                             
